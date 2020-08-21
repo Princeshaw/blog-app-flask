@@ -41,6 +41,7 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('about') }}">About</a>
           </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
           </li>
@@ -50,14 +51,14 @@
   </nav>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('{{ url_for('static',filename='img/about-bg.jpg') }}')">
+  <header class="masthead" style="background-image: url('{{ url_for('static',filename='img/contact-bg.jpg') }}')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="page-heading">
-            <h1>About Me</h1>
-            <span class="subheading">This is what I do.</span>
+            <h1>Add Post</h1>
+            <span class="subheading">Write a blog.</span>
           </div>
         </div>
       </div>
@@ -68,9 +69,40 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur magnam, excepturi aliquid ex itaque esse est vero natus quae optio aperiam soluta voluptatibus corporis atque iste neque sit tempora!</p>
+        
+        <form name="blog" id="blogForm" action="{{ url_for('addblog') }}" method="POST" novalidate>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Title</label>
+              <input type="text" class="form-control" placeholder="Title" id="title" name="title" required data-validation-required-message="Please enter the title.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Subtitle</label>
+              <input type="text" class="form-control" placeholder="Subtitle" id="subtitle" name="subtitle" required data-validation-required-message="Please enter Subtitle.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <label>Author</label>
+              <input type="text" class="form-control" placeholder="Author Name" id="author"name ="author" required data-validation-required-message="Please enter the author name.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Blog Content</label>
+              <textarea rows="5" class="form-control" placeholder="Blog Content" name="content" id="content" required data-validation-required-message="Please enter a message."></textarea>
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <br>
+          <div id="success"></div>
+          <button type="submit" class="btn btn-primary" id="sendMessageButton">Submit</button>
+        </form>
       </div>
     </div>
   </div>
@@ -114,7 +146,6 @@
     </div>
   </footer>
 
-  <!-- Bootstrap core JavaScript -->
     <!-- Bootstrap core JavaScript -->
   <script src="{{ url_for('static',filename='vendor/jquery/jquery.min.js') }}"></script>
   <script src="{{ url_for('static',filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -122,6 +153,11 @@
   <!-- Custom scripts for this template -->
   <script src="{{ url_for('static',filename='js/clean-blog.min.js') }}"></script>
 
+  <!-- Contact Form JavaScript -->
+  <script src="{{ url_for('static',filename='js/jqBootstrapValidation.js') }}"></script>
+  <script src="{{ url_for('static',filename='js/contact_me.js') }}"></script>
+
+  
 </body>
 
 </html>
